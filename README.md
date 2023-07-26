@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Installation Guide - World Wide Capitals: Next.js Client and Laravel Sail REST API
 
 This guide will walk you through the installation process for setting up the World Wide Capitals Next.js client and the Laravel Sail REST API.
@@ -8,6 +9,22 @@ The Next.js client will allow users to register, login, or use available demo cr
 
 Before proceeding, make sure you have the following software installed on your machine:
 
+=======
+Sure! Here's the revised installation guide with the Next.js client setup done first, followed by the REST API:
+
+---
+
+# Installation Guide - World Wide Capitals: Next.js Client and Laravel Sail REST API
+
+This guide will walk you through the installation process for setting up the World Wide Capitals Next.js client and the Laravel Sail REST API.
+
+The Next.js client will allow users to register, login, or use available demo credentials. The REST API will handle user registration, authentication, SPA authentication, and countries data GET requests.
+
+## Prerequisites
+
+Before proceeding, make sure you have the following software installed on your machine:
+
+>>>>>>> a7d30decd4d8287893b423f63b1c951bdd940fb6
 1. **Git**: Version control system for cloning the repositories.
 2. **Node.js**: JavaScript runtime for running the Next.js client.
 3. **Docker**: Containerization platform for running the Laravel Sail environment.
