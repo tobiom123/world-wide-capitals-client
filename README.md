@@ -1,93 +1,99 @@
-# Laravel Breeze - Next.js Edition 🏝️
+# Installation Guide - World Wide Capitals: Next.js Client and Laravel Sail REST API
 
-## Introduction
+This guide will walk you through the installation process for setting up the World Wide Capitals Next.js client and the Laravel Sail REST API.
 
-This repository is an implementation of the [Laravel Breeze](https://laravel.com/docs/starter-kits) application / authentication starter kit frontend in [Next.js](https://nextjs.org). All of the authentication boilerplate is already written for you - powered by [Laravel Sanctum](https://laravel.com/docs/sanctum), allowing you to quickly begin pairing your beautiful Next.js frontend with a powerful Laravel backend.
+The Next.js client will allow users to register, login, or use available demo credentials. The REST API will handle user registration, authentication, SPA authentication, and countries data GET requests.
 
-## Official Documentation
+## Prerequisites
 
-### Installation
+Before proceeding, make sure you have the following software installed on your machine:
 
-First, create a Next.js compatible Laravel backend by installing Laravel Breeze into a [fresh Laravel application](https://laravel.com/docs/installation) and installing Breeze's API scaffolding:
+1. **Git**: Version control system for cloning the repositories.
+2. **Node.js**: JavaScript runtime for running the Next.js client.
+3. **Docker**: Containerization platform for running the Laravel Sail environment.
 
-```bash
-# Create the Laravel application...
-laravel new next-backend
+## Step 1: Clone the Repositories
 
-cd next-backend
-
-# Install Breeze and dependencies...
-composer require laravel/breeze --dev
-
-php artisan breeze:install api
-
-# Run database migrations...
-php artisan migrate
-```
-
-Next, ensure that your application's `APP_URL` and `FRONTEND_URL` environment variables are set to `http://localhost:8000` and `http://localhost:3000`, respectively.
-
-After defining the appropriate environment variables, you may serve the Laravel application using the `serve` Artisan command:
+Open your terminal and clone the two repositories for the Next.js client and the REST API.
 
 ```bash
-# Serve the application...
-php artisan serve
+# Clone the Next.js client repo
+git clone <https://github.com/tobiom123/world-wide-capitals-client.git>
+
+# Clone the Laravel Sail REST API repo
+git clone <https://github.com/tobiom123/world-wide-capitals-rest-api.git>
 ```
 
-Next, clone this repository and install its dependencies with `yarn install` or `npm install`. Then, copy the `.env.example` file to `.env.local` and supply the URL of your backend:
+## Step 2: Set up the Next.js Client
 
+1. Change into the Next.js client directory.
+
+```bash
+cd <world-wide-capitals-client>
 ```
+
+2. Install dependencies.
+
+```bash
+npm install
+```
+
+3. Update the API endpoint.
+
+Open the Next.js client codebase and copy the `.env.example` file to `.env.local` and supply the URL of your backend:
+
+```javascript
+// Inside the .env.local
 NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
 ```
 
-Finally, run the application via `npm run dev`. The application will be available at `http://localhost:3000`:
+4. Run the Next.js client.
 
-```
+```bash
 npm run dev
 ```
 
-> Note: Currently, we recommend using `localhost` during local development of your backend and frontend to avoid CORS "Same-Origin" issues.
+The Next.js client should now be running and accessible at `http://localhost:3000`.
 
-### Authentication Hook
+## Step 3: Set up the Laravel Sail REST API
 
-This Next.js application contains a custom `useAuth` React hook, designed to abstract all authentication logic away from your pages. In addition, the hook can be used to access the currently authenticated user:
+1. Change into the REST API directory.
 
-```js
-const ExamplePage = () => {
-    const { logout, user } = useAuth({ middleware: 'auth' })
-
-    return (
-        <>
-            <p>{user?.name}</p>
-
-            <button onClick={logout}>Sign out</button>
-        </>
-    )
-}
-
-export default ExamplePage
+```bash
+cd <world-wide-capitals-rest-api>
 ```
 
-> Note: You will need to use [optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) (`user?.name` instead of `user.name`) when accessing properties on the user object to account for Next.js's initial server-side render.
+2. Install dependencies and set up the environment.
 
-### Named Routes
+```bash
+# Copy the example environment file and update it with your configuration
+cp .env.example .env
 
-For convenience, [Ziggy](https://github.com/tighten/ziggy#spas-or-separate-repos) may be used to reference your Laravel application's named route URLs from your React application.
+# Install PHP dependencies
+composer install
 
-## Contributing
+# Generate the application key
+php artisan key:generate
+```
 
-Thank you for considering contributing to Breeze Next! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Run the Laravel Sail environment using Docker.
 
-## Code of Conduct
+```bash
+./vendor/bin/sail up
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Create the database tables and seed with demo data
+php artisan migrate --seed
+```
 
-## Security Vulnerabilities
+The REST API should now be running and accessible at `http://localhost:8000`.
 
-Please review [our security policy](https://github.com/laravel/breeze-next/security/policy) on how to report security vulnerabilities.
+## Step 4: Using the Demo Credentials
 
-## License
+You can use the following demo credentials to log in and explore the application:
 
-Laravel Breeze Next is open-sourced software licensed under the [MIT license](LICENSE.md).
-# world-wide-capitals-client
-# world-wide-capitals-client
+- **Username**: example@gmail.com
+- **Password**: password
+
+## Conclusion
+
+You can now register, log in, or use the provided demo credentials to explore the World Wide Capitals application.
