@@ -80,13 +80,29 @@ composer install
 ```bash
 ./vendor/bin/sail up
 
-
 # Generate the application key
 ./vendor/bin/sail artisan key:generate
 
 # Create the database tables and seed with demo data
 ./vendor/bin/sail artisan migrate --seed
 ```
+**If** you experience "connection refused", obtain Docker Network Bridge IPAM Gateway IP
+```
+docker network inspect bridge
+{
+"IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "**Gateway**": "172.17.0.1"
+                }
+            ]
+        },
+}
+```
+Then replace assign the Gateway IP to DB_HOST within your .env
 
 The REST API should now be running and accessible at `http://localhost:8000`.
 
