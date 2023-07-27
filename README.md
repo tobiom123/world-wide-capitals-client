@@ -8,7 +8,6 @@ The Next.js client will allow users to register, login, or use available demo cr
 
 Before proceeding, make sure you have the following software installed on your machine:
 
->>>>>>> a7d30decd4d8287893b423f63b1c951bdd940fb6
 1. **Git**: Version control system for cloning the repositories.
 2. **Node.js**: JavaScript runtime for running the Next.js client.
 3. **Docker**: Containerization platform for running the Laravel Sail environment.
