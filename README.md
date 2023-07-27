@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-# Installation Guide - World Wide Capitals: Next.js Client and Laravel Sail REST API
-
-This guide will walk you through the installation process for setting up the World Wide Capitals Next.js client and the Laravel Sail REST API.
-
-The Next.js client will allow users to register, login, or use available demo credentials. The REST API will handle user registration, authentication, SPA authentication, and countries data GET requests.
-
-## Prerequisites
-
-Before proceeding, make sure you have the following software installed on your machine:
-
-=======
-Sure! Here's the revised installation guide with the Next.js client setup done first, followed by the REST API:
-
----
-
 # Installation Guide - World Wide Capitals: Next.js Client and Laravel Sail REST API
 
 This guide will walk you through the installation process for setting up the World Wide Capitals Next.js client and the Laravel Sail REST API.
@@ -28,6 +12,8 @@ Before proceeding, make sure you have the following software installed on your m
 1. **Git**: Version control system for cloning the repositories.
 2. **Node.js**: JavaScript runtime for running the Next.js client.
 3. **Docker**: Containerization platform for running the Laravel Sail environment.
+4. PHP ^8.1
+5. Composer
 
 ## Step 1: Clone the Repositories
 
@@ -46,7 +32,7 @@ git clone <https://github.com/tobiom123/world-wide-capitals-rest-api.git>
 1. Change into the Next.js client directory.
 
 ```bash
-cd <world-wide-capitals-client>
+cd world-wide-capitals-client
 ```
 
 2. Install dependencies.
@@ -60,7 +46,7 @@ npm install
 Open the Next.js client codebase and copy the `.env.example` file to `.env.local` and supply the URL of your backend:
 
 ```javascript
-// Inside the .env.local
+# Inside the .env.local
 NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
 ```
 
@@ -77,7 +63,7 @@ The Next.js client should now be running and accessible at `http://localhost:300
 1. Change into the REST API directory.
 
 ```bash
-cd <world-wide-capitals-rest-api>
+cd world-wide-capitals-rest-api
 ```
 
 2. Install dependencies and set up the environment.
@@ -88,9 +74,6 @@ cp .env.example .env
 
 # Install PHP dependencies
 composer install
-
-# Generate the application key
-php artisan key:generate
 ```
 
 3. Run the Laravel Sail environment using Docker.
@@ -98,8 +81,12 @@ php artisan key:generate
 ```bash
 ./vendor/bin/sail up
 
+
+# Generate the application key
+./vendor/bin/sail artisan key:generate
+
 # Create the database tables and seed with demo data
-php artisan migrate --seed
+./vendor/bin/sail artisan migrate --seed
 ```
 
 The REST API should now be running and accessible at `http://localhost:8000`.
